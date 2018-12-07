@@ -1,0 +1,22 @@
+### STS ###
+.apt-generated
+.classpath
+.factorypath
+.project
+.springBeans
+.sts4-cache
+.log
+.bash_profile
+.sql
+.swagger-codegen
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### Maven ###
+target/
+.ideaDataSources/
+/projectFilesBackup

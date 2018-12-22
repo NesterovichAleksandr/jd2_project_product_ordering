@@ -42,7 +42,7 @@ public interface ProductOrderApi {
         @ApiResponse(code = 200, message = "Success", response = ProductOrder.class, responseContainer = "List") })
     @RequestMapping(value = "/productOrder",
         produces = { "application/json;charset=utf-8" }, 
-        consumes = { "application/json;charset=utf-8" },
+        //consumes = { "application/json;charset=utf-8" },
         method = RequestMethod.GET)
     ResponseEntity<List<ProductOrder>> productOrderFind(@ApiParam(value = "Attributes selection") @Valid @RequestParam(value = "fields", required = false) String fields);
 

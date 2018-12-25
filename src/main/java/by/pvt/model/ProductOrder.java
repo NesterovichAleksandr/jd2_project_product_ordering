@@ -7,8 +7,12 @@ import io.swagger.annotations.ApiModelProperty;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.hibernate.annotations.GenericGenerator;
 import org.threeten.bp.OffsetDateTime;
 import org.springframework.validation.annotation.Validated;
+
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -18,79 +22,105 @@ import javax.validation.constraints.*;
 @ApiModel(description = "")
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-07T17:53:15.346+03:00")
-
+@Entity
 public class ProductOrder   {
+
   @JsonProperty("id")
+  @Id
+  @GeneratedValue(generator = "UUID")
+  @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
   private String id = null;
 
   @JsonProperty("href")
+  @Column
   private String href = null;
 
   @JsonProperty("externalId")
+  @Column
   private String externalId = null;
 
   @JsonProperty("priority")
+  @Transient
   private PriorityType priority = null;
 
   @JsonProperty("description")
+  @Column
   private String description = null;
 
   @JsonProperty("category")
+  @Column
   private String category = null;
 
   @JsonProperty("state")
+  @Transient
   private StateType state = null;
 
   @JsonProperty("orderDate")
+  @Transient
   private OffsetDateTime orderDate = null;
 
   @JsonProperty("completionDate")
+  @Transient
   private OffsetDateTime completionDate = null;
 
   @JsonProperty("requestedStartDate")
+  @Transient
   private OffsetDateTime requestedStartDate = null;
 
   @JsonProperty("requestedCompletionDate")
+  @Transient
   private OffsetDateTime requestedCompletionDate = null;
 
   @JsonProperty("expectedCompletionDate")
+  @Transient
   private OffsetDateTime expectedCompletionDate = null;
 
   @JsonProperty("notificationContact")
+  @Column
   private String notificationContact = null;
 
   @JsonProperty("@baseType")
+  @Column
   private String baseType = null;
 
   @JsonProperty("@type")
+  @Column
   private String type = null;
 
   @JsonProperty("@schemaLocation")
+  @Column
   private String schemaLocation = null;
 
   @JsonProperty("Channel")
+  @Transient
   private Channel channel = null;
 
   @JsonProperty("note")
+  @Transient
   private Note note = null;
 
   @JsonProperty("relatedParty")
   @Valid
+  @Transient
   private List<RelatedPartyRef> relatedParty = null;
 
   @JsonProperty("payment")
   @Valid
+  @Transient
   private List<PaymentRef> payment = null;
 
   @JsonProperty("billingAccount")
+  @Transient
   private BillingAccountRef billingAccount = null;
 
   @JsonProperty("orderTotalPrice")
   @Valid
+  @Transient
   private List<OrderPrice> orderTotalPrice = null;
 
   @JsonProperty("orderItem")
   @Valid
+  @Transient
   private List<OrderItem> orderItem = new ArrayList<OrderItem>();
 
   public ProductOrder id(String id) {

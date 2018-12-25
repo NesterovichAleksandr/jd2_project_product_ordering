@@ -1,30 +1,23 @@
 package by.pvt.dao;
 
-import by.pvt.model.ProductOrder;
-import org.springframework.stereotype.Repository;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-@Repository
-public class BaseDaoImpl<T> {
+public abstract class BaseDaoImpl<T> {
 
-    public List<T> find() {
-        return List.of(testData("1"),testData("2"),testData("3"));
-    }
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    public abstract List<T> find();
 
     public boolean add(List<T> items) {
         return false;
     }
 
-
-    private T testData(String prefix) {
-        ProductOrder productOrder = new ProductOrder();
-        productOrder.setId(prefix);
-        productOrder.setCategory("category" + prefix);
-        productOrder.setDescription("Description" + prefix);
-
-        return (T) productOrder;
+    Session openSession() {
+        return sessionFactory.openSession();
     }
-
-
 }

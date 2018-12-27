@@ -2,6 +2,8 @@ package by.pvt.dao;
 
 import by.pvt.model.ProductOrder;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,30 +15,24 @@ public class ProductOrderDaoImpl<T> extends BaseDaoImpl {
 
     private static Logger log = Logger.getLogger(ProductOrderDaoImpl.class.getName());
 
-    @Override
-    public List<T> find() {
-        createTestData();
-
-        Session session = openSession();
-        List<T> list = session.createQuery("from ProductOrder").list();
-        session.close();
-        return list;
+    @Autowired
+    public ProductOrderDaoImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 
-    private void createTestData() {
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<T> find() {
+        log.info("Call find()");
+        return openSession().createQuery("from ProductOrder").list();
+    }
+
+    public void createTestData() {
+        log.info("Call createTestData()");
         Session session = openSession();
-        try {
-            session.beginTransaction();
-            session.saveOrUpdate(fillProductOrder("1"));
-            session.saveOrUpdate(fillProductOrder("2"));
-            session.saveOrUpdate(fillProductOrder("3"));
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            log.log(Level.SEVERE, "Error during creation of test data", e);
-            if (session.getTransaction() != null) session.getTransaction().rollback();
-        } finally {
-            session.close();
-        }
+        session.saveOrUpdate(fillProductOrder("1"));
+        session.saveOrUpdate(fillProductOrder("2"));
+        session.saveOrUpdate(fillProductOrder("3"));
     }
 
     private T fillProductOrder(String prefix) {

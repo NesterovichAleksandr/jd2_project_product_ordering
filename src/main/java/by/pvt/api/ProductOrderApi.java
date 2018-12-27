@@ -27,7 +27,7 @@ public interface ProductOrderApi {
         @ApiResponse(code = 201, message = "Success", response = ProductOrder.class) })
     @RequestMapping(value = "/productOrder",
         produces = { "application/json;charset=utf-8" }, 
-        consumes = { "application/json;charset=utf-8" },
+        //consumes = { "application/json;charset=utf-8" },
         method = RequestMethod.POST)
     ResponseEntity<ProductOrder> productOrderCreate(@ApiParam(value = "" ,required=true )  @Valid @RequestBody POSTREQProductOrder productOrder);
 
@@ -47,7 +47,7 @@ public interface ProductOrderApi {
         @ApiResponse(code = 200, message = "Success", response = ProductOrder.class) })
     @RequestMapping(value = "/productOrder/{productOrderId}",
         produces = { "application/json;charset=utf-8" }, 
-        consumes = { "application/json;charset=utf-8" },
+        //consumes = { "application/json;charset=utf-8" },
         method = RequestMethod.GET)
     ResponseEntity<ProductOrder> productOrderGet(@ApiParam(value = "",required=true) @PathVariable("productOrderId") String productOrderId,@ApiParam(value = "Attributes selection") @Valid @RequestParam(value = "fields", required = false) String fields);
 
@@ -57,7 +57,7 @@ public interface ProductOrderApi {
         @ApiResponse(code = 200, message = "Success", response = ProductOrder.class) })
     @RequestMapping(value = "/productOrder/{productOrderId}",
         produces = { "application/json;charset=utf-8" }, 
-        consumes = { "application/json;charset=utf-8" },
+        //consumes = { "application/json;charset=utf-8" },
         method = RequestMethod.PATCH)
     ResponseEntity<ProductOrder> productOrderPatch(@ApiParam(value = "",required=true) @PathVariable("productOrderId") String productOrderId,@ApiParam(value = "" ,required=true )  @Valid @RequestBody ProductOrder productOrder);
 

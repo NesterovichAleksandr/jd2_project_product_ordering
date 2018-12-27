@@ -19,7 +19,7 @@ public class ProductOrderServiceImpl<T> extends BaseServiceImpl {
     private ProductOrderDaoImpl<T> productOrderDao;
 
     @Override
-    @Transactional
+    @Transactional(propagation =  Propagation.REQUIRED, readOnly = true)
     public List<T> list() {
         log.info("productOrderDao: " + productOrderDao);
         return productOrderDao.find();

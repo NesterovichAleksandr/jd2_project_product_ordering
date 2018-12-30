@@ -12,7 +12,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
-@ComponentScan(basePackages = { "io.swagger", "by.pvt", "io.swagger.configuration"})
+@ComponentScan(basePackages = {"io.swagger", "by.pvt", "io.swagger.configuration"})
 @EnableAutoConfiguration(exclude = HibernateJpaAutoConfiguration.class)
 public class Swagger2SpringBoot implements CommandLineRunner {
 

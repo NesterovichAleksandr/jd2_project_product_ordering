@@ -19,6 +19,7 @@ import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
+
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-07T17:53:15.346+03:00")
 
 @Controller
@@ -39,7 +40,7 @@ public class ProductOrderApiController implements ProductOrderApi {
         this.request = request;
     }
 
-    public ResponseEntity<ProductOrder> productOrderCreate(@ApiParam(value = "" ,required=true )  @Valid @RequestBody POSTREQProductOrder productOrder) {
+    public ResponseEntity<ProductOrder> productOrderCreate(@ApiParam(value = "", required = true) @Valid @RequestBody POSTREQProductOrder productOrder) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
@@ -74,7 +75,7 @@ public class ProductOrderApiController implements ProductOrderApi {
         return new ResponseEntity<List<ProductOrder>>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<ProductOrder> productOrderGet(@ApiParam(value = "",required=true) @PathVariable("productOrderId") String productOrderId,@ApiParam(value = "Attributes selection") @Valid @RequestParam(value = "fields", required = false) String fields) {
+    public ResponseEntity<ProductOrder> productOrderGet(@ApiParam(value = "", required = true) @PathVariable("productOrderId") String productOrderId, @ApiParam(value = "Attributes selection") @Valid @RequestParam(value = "fields", required = false) String fields) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
@@ -88,7 +89,7 @@ public class ProductOrderApiController implements ProductOrderApi {
         return new ResponseEntity<ProductOrder>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<ProductOrder> productOrderPatch(@ApiParam(value = "",required=true) @PathVariable("productOrderId") String productOrderId,@ApiParam(value = "" ,required=true )  @Valid @RequestBody ProductOrder productOrder) {
+    public ResponseEntity<ProductOrder> productOrderPatch(@ApiParam(value = "", required = true) @PathVariable("productOrderId") String productOrderId, @ApiParam(value = "", required = true) @Valid @RequestBody ProductOrder productOrder) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {

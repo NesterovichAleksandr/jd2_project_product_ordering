@@ -5,36 +5,36 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * 
+ *
  */
 public enum PriceType {
-  
-  RECURING("recuring"),
-  
-  ONETIME("oneTime"),
-  
-  USAGE("usage");
 
-  private String value;
+    RECURING("recuring"),
 
-  PriceType(String value) {
-    this.value = value;
-  }
+    ONETIME("oneTime"),
 
-  @Override
-  @JsonValue
-  public String toString() {
-    return String.valueOf(value);
-  }
+    USAGE("usage");
 
-  @JsonCreator
-  public static PriceType fromValue(String text) {
-    for (PriceType b : PriceType.values()) {
-      if (String.valueOf(b.value).equals(text)) {
-        return b;
-      }
+    private String value;
+
+    PriceType(String value) {
+        this.value = value;
     }
-    return null;
-  }
+
+    @Override
+    @JsonValue
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static PriceType fromValue(String text) {
+        for (PriceType b : PriceType.values()) {
+            if (String.valueOf(b.value).equals(text)) {
+                return b;
+            }
+        }
+        return null;
+    }
 }
 

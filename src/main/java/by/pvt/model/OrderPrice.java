@@ -58,7 +58,7 @@ public class OrderPrice extends BasePojo {
 
     @JsonProperty("priceAlteration")
     @Valid
-    @Transient
+    @ElementCollection
     private List<PriceAlteration> priceAlteration = null;
 
     @JsonProperty("billingAccount")

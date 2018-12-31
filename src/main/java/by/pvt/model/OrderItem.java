@@ -52,16 +52,17 @@ public class OrderItem {
     private String schemaLocation = null;
 
     @JsonProperty("appointment")
-    @Transient
+    @OneToOne
     private AppointmentRef appointment = null;
 
     @JsonProperty("billingAccount")
-    @Transient
+    @OneToOne
     private BillingAccountRef billingAccount = null;
 
     @JsonProperty("itemPrice")
     @Valid
     @Transient
+    //@ElementCollection
     private List<OrderPrice> itemPrice = null;
 
     @JsonProperty("itemTotalPrice")
@@ -70,36 +71,36 @@ public class OrderItem {
     private List<OrderPrice> itemTotalPrice = null;
 
     @JsonProperty("productOffering")
-    @Transient
+    @OneToOne
     private ProductOffering productOffering = null;
 
     @JsonProperty("product")
-    @Transient
+    @OneToOne
     private Product product = null;
 
     @JsonProperty("orderItemRelationship")
     @Valid
-    @Transient
+    @OneToMany
     private List<OrderItemRelationShip> orderItemRelationship = null;
 
     @JsonProperty("qualification")
     @Valid
-    @Transient
+    @OneToMany
     private List<QualificationRef> qualification = null;
 
     @JsonProperty("payment")
     @Valid
-    @Transient
+    @OneToMany
     private List<PaymentRef> payment = null;
 
     @JsonProperty("itemTerm")
     @Valid
-    @Transient
+    @ElementCollection
     private List<OrderTerm> itemTerm = null;
 
     @JsonProperty("orderItem")
     @Valid
-    @Transient
+    @ManyToMany
     private List<OrderItem> orderItem = null;
 
     public OrderItem id(String id) {

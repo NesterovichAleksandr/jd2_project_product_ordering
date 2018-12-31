@@ -11,8 +11,7 @@ import java.util.List;
 
 import org.springframework.validation.annotation.Validated;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -22,37 +21,48 @@ import javax.validation.constraints.*;
 @ApiModel(description = "An amount, usually of money, that represents the actual price paid by the Customer for this item or this order.")
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-07T17:53:15.346+03:00")
+@Entity
+public class OrderPrice extends BasePojo {
 
-public class OrderPrice {
     @JsonProperty("name")
+    @Column
     private String name = null;
 
     @JsonProperty("description")
+    @Column
     private String description = null;
 
     @JsonProperty("priceType")
+    @Column
     private PriceType priceType = null;
 
     @JsonProperty("unitOfMeasure")
+    @Column
     private String unitOfMeasure = null;
 
     @JsonProperty("recurringChargePeriod")
+    @Column
     private String recurringChargePeriod = null;
 
     @JsonProperty("@type")
+    @Column
     private String type = null;
 
     @JsonProperty("@schemaLocation")
+    @Column
     private String schemaLocation = null;
 
     @JsonProperty("price")
+    @OneToOne
     private Price price = null;
 
     @JsonProperty("priceAlteration")
     @Valid
+    @Transient
     private List<PriceAlteration> priceAlteration = null;
 
     @JsonProperty("billingAccount")
+    @OneToOne
     private BillingAccountRef billingAccount = null;
 
     public OrderPrice name(String name) {

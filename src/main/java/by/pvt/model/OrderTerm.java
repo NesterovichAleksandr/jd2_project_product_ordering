@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 
+import javax.persistence.Embeddable;
 import javax.validation.Valid;
 
 /**
@@ -15,7 +16,7 @@ import javax.validation.Valid;
 @ApiModel(description = "Description of a productTerm linked to this orderItem. This represent a commitment with a duration. Duration or name must be provided.")
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-07T17:53:15.346+03:00")
-
+@Embeddable
 public class OrderTerm {
     @JsonProperty("name")
     private String name = null;

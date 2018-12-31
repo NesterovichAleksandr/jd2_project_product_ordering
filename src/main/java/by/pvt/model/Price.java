@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 
+import javax.persistence.*;
 import javax.validation.Valid;
 
 /**
@@ -15,24 +16,31 @@ import javax.validation.Valid;
 @ApiModel(description = "Provides all amounts (tax included, duty free, tax rate), used currency and percentage to apply for Price Alteration.")
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-07T17:53:15.346+03:00")
+@Entity
+public class Price extends BasePojo {
 
-public class Price {
     @JsonProperty("taxIncludedAmount")
+    @Transient
     private Money taxIncludedAmount = null;
 
     @JsonProperty("dutyFreeAmount")
+    @Transient
     private Money dutyFreeAmount = null;
 
     @JsonProperty("taxRate")
+    @Column
     private Float taxRate = null;
 
     @JsonProperty("percentage")
+    @Column
     private Float percentage = null;
 
     @JsonProperty("@type")
+    @Column
     private String type = null;
 
     @JsonProperty("@schemaLocation")
+    @Column
     private String schemaLocation = null;
 
     public Price taxIncludedAmount(Money taxIncludedAmount) {

@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 
+import javax.persistence.Embeddable;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -16,7 +17,7 @@ import javax.validation.constraints.*;
 @ApiModel(description = "Is an amount, usually of money, that modifies the price charged for an order item.")
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-07T17:53:15.346+03:00")
-
+@Embeddable
 public class PriceAlteration {
     @JsonProperty("name")
     private String name = null;

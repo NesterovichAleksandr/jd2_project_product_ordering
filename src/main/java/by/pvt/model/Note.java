@@ -23,15 +23,15 @@ import javax.validation.constraints.*;
 public class Note {
 
     @JsonProperty("text")
-    @Column
+    //@Column
     private String text = null;
 
     @JsonProperty("date")
-    @Column
+    //@Column
     private OffsetDateTime date = null;
 
     @JsonProperty("author")
-    @Column
+    //@Column
     private String author = null;
 
     public Note text(String text) {

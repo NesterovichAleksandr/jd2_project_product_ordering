@@ -61,13 +61,12 @@ public class OrderItem {
 
     @JsonProperty("itemPrice")
     @Valid
-    @Transient
-    //@ElementCollection
+    @OneToMany
     private List<OrderPrice> itemPrice = null;
 
     @JsonProperty("itemTotalPrice")
     @Valid
-    @Transient
+    @OneToMany
     private List<OrderPrice> itemTotalPrice = null;
 
     @JsonProperty("productOffering")

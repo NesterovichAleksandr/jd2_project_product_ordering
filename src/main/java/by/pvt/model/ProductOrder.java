@@ -117,9 +117,7 @@ public class ProductOrder {
 
     @JsonProperty("orderTotalPrice")
     @Valid
-    @Transient
-    //@ElementCollection
-    //@LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany
     private List<OrderPrice> orderTotalPrice = null;
 
     @JsonProperty("orderItem")

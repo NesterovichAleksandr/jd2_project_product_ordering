@@ -7,6 +7,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 
+import javax.persistence.Embeddable;
+import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -16,12 +18,14 @@ import javax.validation.constraints.*;
 @ApiModel(description = "")
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-07T17:53:15.346+03:00")
-
+@Embeddable
 public class ProductRelationship {
+
     @JsonProperty("type")
     private RelationShipType type = null;
 
     @JsonProperty("product")
+    @OneToOne
     private Product product = null;
 
     public ProductRelationship type(RelationShipType type) {

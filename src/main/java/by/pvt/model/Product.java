@@ -40,26 +40,26 @@ public class Product {
 
     @JsonProperty("place")
     @Valid
-    @Transient
+    @OneToMany
     private List<Place> place = null;
 
     @JsonProperty("characteristic")
     @Valid
-    @Transient
+    @ElementCollection
     private List<ProductCharacteristic> characteristic = null;
 
     @JsonProperty("relatedParty")
     @Valid
-    @Transient
+    @OneToMany
     private List<RelatedPartyRef> relatedParty = null;
 
     @JsonProperty("productRelationship")
     @Valid
-    @Transient
+    @ElementCollection
     private List<ProductRelationship> productRelationship = null;
 
     @JsonProperty("productSpecification")
-    @Transient
+    @OneToOne
     private ProductSpecificationRef productSpecification = null;
 
     public Product id(String id) {

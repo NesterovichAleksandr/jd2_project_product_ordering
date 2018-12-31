@@ -32,7 +32,7 @@ public class POSTREQOrderItem {
     private String id = null;
 
     @JsonProperty("action")
-    @Transient
+    @Column
     private ActionType action = null;
 
     @JsonProperty("quantity")
@@ -48,54 +48,54 @@ public class POSTREQOrderItem {
     private String schemaLocation = null;
 
     @JsonProperty("appointment")
-    @Transient
+    @OneToOne
     private AppointmentRef appointment = null;
 
     @JsonProperty("billingAccount")
-    @Transient
+    @OneToOne
     private BillingAccountRef billingAccount = null;
 
     @JsonProperty("itemPrice")
     @Valid
-    @Transient
+    @OneToMany
     private List<OrderPrice> itemPrice = null;
 
     @JsonProperty("itemTotalPrice")
     @Valid
-    @Transient
+    @OneToMany
     private List<OrderPrice> itemTotalPrice = null;
 
     @JsonProperty("productOffering")
-    @Transient
+    @OneToOne
     private ProductOffering productOffering = null;
 
     @JsonProperty("product")
-    @Transient
+    @OneToOne
     private Product product = null;
 
     @JsonProperty("orderItemRelationship")
     @Valid
-    @Transient
+    @OneToMany
     private List<OrderItemRelationShip> orderItemRelationship = null;
 
     @JsonProperty("qualification")
     @Valid
-    @Transient
+    @OneToMany
     private List<QualificationRef> qualification = null;
 
     @JsonProperty("payment")
     @Valid
-    @Transient
+    @OneToMany
     private List<PaymentRef> payment = null;
 
     @JsonProperty("itemTerm")
     @Valid
-    @Transient
+    @ElementCollection
     private List<OrderTerm> itemTerm = null;
 
     @JsonProperty("orderItem")
     @Valid
-    @Transient
+    @OneToMany
     private List<OrderItem> orderItem = null;
 
     public POSTREQOrderItem id(String id) {

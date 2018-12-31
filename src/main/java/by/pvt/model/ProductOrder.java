@@ -41,7 +41,7 @@ public class ProductOrder {
     private String externalId = null;
 
     @JsonProperty("priority")
-    @Transient
+    @Column
     private PriorityType priority = null;
 
     @JsonProperty("description")
@@ -53,27 +53,27 @@ public class ProductOrder {
     private String category = null;
 
     @JsonProperty("state")
-    @Transient
+    @Column
     private StateType state = null;
 
     @JsonProperty("orderDate")
-    @Transient
+    @Column
     private OffsetDateTime orderDate = null;
 
     @JsonProperty("completionDate")
-    @Transient
+    @Column
     private OffsetDateTime completionDate = null;
 
     @JsonProperty("requestedStartDate")
-    @Transient
+    @Column
     private OffsetDateTime requestedStartDate = null;
 
     @JsonProperty("requestedCompletionDate")
-    @Transient
+    @Column
     private OffsetDateTime requestedCompletionDate = null;
 
     @JsonProperty("expectedCompletionDate")
-    @Transient
+    @Column
     private OffsetDateTime expectedCompletionDate = null;
 
     @JsonProperty("notificationContact")
@@ -93,35 +93,38 @@ public class ProductOrder {
     private String schemaLocation = null;
 
     @JsonProperty("Channel")
-    @Transient
+    @OneToOne
     private Channel channel = null;
 
     @JsonProperty("note")
-    @Transient
+    @Embedded
     private Note note = null;
 
     @JsonProperty("relatedParty")
     @Valid
-    @Transient
+    @OneToMany
+    //@LazyCollection(LazyCollectionOption.FALSE)
     private List<RelatedPartyRef> relatedParty = null;
 
     @JsonProperty("payment")
     @Valid
-    @Transient
+    @OneToMany
     private List<PaymentRef> payment = null;
 
     @JsonProperty("billingAccount")
-    @Transient
+    @OneToOne
     private BillingAccountRef billingAccount = null;
 
     @JsonProperty("orderTotalPrice")
     @Valid
     @Transient
+    //@ElementCollection
+    //@LazyCollection(LazyCollectionOption.FALSE)
     private List<OrderPrice> orderTotalPrice = null;
 
     @JsonProperty("orderItem")
     @Valid
-    @Transient
+    @OneToMany
     private List<OrderItem> orderItem = new ArrayList<OrderItem>();
 
     public ProductOrder id(String id) {

@@ -12,6 +12,7 @@ import java.util.List;
 import org.threeten.bp.OffsetDateTime;
 import org.springframework.validation.annotation.Validated;
 
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -21,61 +22,79 @@ import javax.validation.constraints.*;
 @ApiModel(description = "")
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-12-07T17:53:15.346+03:00")
+@Entity
+public class POSTREQProductOrder extends BasePojo {
 
-public class POSTREQProductOrder {
     @JsonProperty("externalId")
+    @Column
     private String externalId = null;
 
     @JsonProperty("priority")
+    @Column
     private PriorityType priority = null;
 
     @JsonProperty("description")
+    @Column
     private String description = null;
 
     @JsonProperty("category")
+    @Column
     private String category = null;
 
     @JsonProperty("requestedStartDate")
+    @Column
     private OffsetDateTime requestedStartDate = null;
 
     @JsonProperty("requestedCompletionDate")
+    @Column
     private OffsetDateTime requestedCompletionDate = null;
 
     @JsonProperty("notificationContact")
+    @Column
     private String notificationContact = null;
 
     @JsonProperty("@baseType")
+    @Column
     private String baseType = null;
 
     @JsonProperty("@type")
+    @Column
     private String type = null;
 
     @JsonProperty("@schemaLocation")
+    @Column
     private String schemaLocation = null;
 
     @JsonProperty("Channel")
+    @OneToOne
     private Channel channel = null;
 
     @JsonProperty("note")
+    @Embedded
     private Note note = null;
 
     @JsonProperty("relatedParty")
     @Valid
+    @OneToMany
     private List<RelatedPartyRef> relatedParty = null;
 
     @JsonProperty("payment")
     @Valid
+    @OneToMany
     private List<PaymentRef> payment = null;
 
     @JsonProperty("billingAccount")
+    @OneToOne
     private BillingAccountRef billingAccount = null;
 
     @JsonProperty("orderTotalPrice")
     @Valid
+    @OneToMany
     private List<OrderPrice> orderTotalPrice = null;
 
     @JsonProperty("orderItem")
     @Valid
+    @OneToMany
     private List<POSTREQOrderItem> orderItem = new ArrayList<POSTREQOrderItem>();
 
     public POSTREQProductOrder externalId(String externalId) {

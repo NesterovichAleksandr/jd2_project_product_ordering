@@ -33,6 +33,7 @@ public class POSTREQOrderItem {
 
     @JsonProperty("action")
     @Column
+    @Enumerated
     private ActionType action = null;
 
     @JsonProperty("quantity")

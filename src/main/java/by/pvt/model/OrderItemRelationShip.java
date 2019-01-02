@@ -8,10 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.validation.annotation.Validated;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -32,6 +29,7 @@ public class OrderItemRelationShip {
 
     @JsonProperty("type")
     @Column
+    @Enumerated
     private RelationShipType type = null;
 
     public OrderItemRelationShip id(String id) {

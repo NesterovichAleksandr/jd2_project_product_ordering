@@ -33,10 +33,12 @@ public class OrderItem {
 
     @JsonProperty("action")
     @Column
+    @Enumerated
     private ActionType action = null;
 
     @JsonProperty("state")
     @Column
+    @Enumerated
     private StateType state = null;
 
     @JsonProperty("quantity")

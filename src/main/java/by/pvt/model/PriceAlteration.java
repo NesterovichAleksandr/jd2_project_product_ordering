@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
@@ -28,6 +29,7 @@ public class PriceAlteration {
     private String description = null;
 
     @JsonProperty("priceType")
+    @Enumerated
     private PriceType priceType = null;
 
     @JsonProperty("unitOfMeasure")

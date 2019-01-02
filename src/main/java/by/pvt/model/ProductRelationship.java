@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Enumerated;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -22,6 +23,7 @@ import javax.validation.constraints.*;
 public class ProductRelationship {
 
     @JsonProperty("type")
+    @Enumerated
     private RelationShipType type = null;
 
     @JsonProperty("product")

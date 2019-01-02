@@ -34,6 +34,7 @@ public class OrderPrice extends BasePojo {
 
     @JsonProperty("priceType")
     @Column
+    @Enumerated
     private PriceType priceType = null;
 
     @JsonProperty("unitOfMeasure")

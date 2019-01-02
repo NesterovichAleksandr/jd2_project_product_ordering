@@ -31,6 +31,7 @@ public class POSTREQProductOrder extends BasePojo {
 
     @JsonProperty("priority")
     @Column
+    @Enumerated
     private PriorityType priority = null;
 
     @JsonProperty("description")

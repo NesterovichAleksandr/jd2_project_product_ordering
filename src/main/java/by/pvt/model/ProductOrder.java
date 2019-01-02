@@ -42,6 +42,7 @@ public class ProductOrder {
 
     @JsonProperty("priority")
     @Column
+    @Enumerated
     private PriorityType priority = null;
 
     @JsonProperty("description")
@@ -54,6 +55,7 @@ public class ProductOrder {
 
     @JsonProperty("state")
     @Column
+    @Enumerated
     private StateType state = null;
 
     @JsonProperty("orderDate")

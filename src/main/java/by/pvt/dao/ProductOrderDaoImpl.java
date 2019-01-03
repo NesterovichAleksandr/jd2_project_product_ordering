@@ -1,5 +1,8 @@
 package by.pvt.dao;
 
+import by.pvt.model.ActionType;
+import by.pvt.model.OrderItem;
+import by.pvt.model.Product;
 import by.pvt.model.ProductOrder;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,6 +16,10 @@ import java.util.logging.Logger;
 public class ProductOrderDaoImpl<T> extends BaseDaoImpl {
 
     private static Logger log = Logger.getLogger(ProductOrderDaoImpl.class.getName());
+
+    /*public ProductOrderDaoImpl(){
+        super(ProductOrder.class);
+    }*/
 
     @Autowired
     public ProductOrderDaoImpl(SessionFactory sessionFactory) {
@@ -39,6 +46,13 @@ public class ProductOrderDaoImpl<T> extends BaseDaoImpl {
         productOrder.setDescription("Description" + prefix);
         productOrder.setCategory("Category" + prefix);
         productOrder.setHref("localhost/" + prefix);
+
+        OrderItem orderItem = new OrderItem();
+        orderItem.setAction(ActionType.ADD);
+        orderItem.setProduct(new Product());
+
+
+        productOrder.setOrderItem(List.of(orderItem));
         return (T) productOrder;
     }
 }

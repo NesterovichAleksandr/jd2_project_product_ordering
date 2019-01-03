@@ -20,11 +20,15 @@ import javax.validation.Valid;
 public class Price extends BasePojo {
 
     @JsonProperty("taxIncludedAmount")
-    @Transient
+    @Embedded
     private Money taxIncludedAmount = null;
 
     @JsonProperty("dutyFreeAmount")
-    @Transient
+    @Embedded
+    @AttributeOverrides( {
+            @AttributeOverride(name="unit", column = @Column(name="dutyFreeAmount_unit") ),
+            @AttributeOverride(name="value", column = @Column(name="dutyFreeAmount_value") ),
+    } )
     private Money dutyFreeAmount = null;
 
     @JsonProperty("taxRate")

@@ -40,11 +40,11 @@ public class ProductSpecificationRef {
     private String name = null;
 
     @JsonProperty("@type")
-    @Column
+    @Column(name = "product_specification_ref_type")
     private String type = null;
 
     @JsonProperty("describing")
-    @Transient
+    @Embedded
     private ProductSpecificationSchemaRef describing = null;
 
     public ProductSpecificationRef id(String id) {

@@ -30,7 +30,7 @@ public interface ProductOrderApi {
             produces = {"application/json;charset=utf-8"},
             //consumes = { "application/json;charset=utf-8" },
             method = RequestMethod.POST)
-    ResponseEntity<ProductOrder> productOrderCreate(@ApiParam(value = "", required = true) @Valid @RequestBody POSTREQProductOrder productOrder);
+    ResponseEntity<ProductOrder> productOrderCreate(@ApiParam(value = "", required = true) /*@Valid*/ @RequestBody POSTREQProductOrder productOrder);
 
 
     @ApiOperation(value = "List product orders", nickname = "productOrderFind", notes = "This operation list product order entities. Attribute  selection  is enabled for all first level attributes. Filtering may  be available  depending  on the compliance  level supported  by an implementation.", response = ProductOrder.class, responseContainer = "List", tags = {"ProductOrder",})

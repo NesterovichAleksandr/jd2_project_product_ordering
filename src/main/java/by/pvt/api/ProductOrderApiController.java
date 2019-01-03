@@ -40,7 +40,7 @@ public class ProductOrderApiController implements ProductOrderApi {
         this.request = request;
     }
 
-    public ResponseEntity<ProductOrder> productOrderCreate(@ApiParam(value = "", required = true) @Valid @RequestBody POSTREQProductOrder productOrder) {
+    public ResponseEntity<ProductOrder> productOrderCreate(@ApiParam(value = "", required = true) /*@Valid*/ @RequestBody POSTREQProductOrder productOrder) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {

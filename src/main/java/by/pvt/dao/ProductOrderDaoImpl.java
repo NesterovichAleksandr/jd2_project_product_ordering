@@ -1,10 +1,5 @@
 package by.pvt.dao;
 
-import by.pvt.model.ActionType;
-import by.pvt.model.OrderItem;
-import by.pvt.model.Product;
-import by.pvt.model.ProductOrder;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -33,26 +28,7 @@ public class ProductOrderDaoImpl<T> extends BaseDaoImpl {
         return openSession().createQuery("from ProductOrder").list();
     }
 
-    public void createTestData() {
-        log.info("Call createTestData()");
-        Session session = openSession();
-        session.saveOrUpdate(fillProductOrder("1"));
-        session.saveOrUpdate(fillProductOrder("2"));
-        session.saveOrUpdate(fillProductOrder("3"));
-    }
-
-    private T fillProductOrder(String prefix) {
-        ProductOrder productOrder = new ProductOrder();
-        productOrder.setDescription("Description" + prefix);
-        productOrder.setCategory("Category" + prefix);
-        productOrder.setHref("localhost/" + prefix);
-
-        OrderItem orderItem = new OrderItem();
-        orderItem.setAction(ActionType.ADD);
-        orderItem.setProduct(new Product());
-
-
-        productOrder.setOrderItem(List.of(orderItem));
-        return (T) productOrder;
+    public void save(T item) {
+        openSession().saveOrUpdate(item);
     }
 }

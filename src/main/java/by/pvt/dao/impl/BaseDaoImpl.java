@@ -1,18 +1,20 @@
-package by.pvt.dao;
+package by.pvt.dao.impl;
 
+import by.pvt.dao.BaseDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Logger;
 
-public abstract class BaseDaoImpl<T> {
+public abstract class BaseDaoImpl<T, PK extends Serializable> implements BaseDao<T, PK> {
 
     @Autowired
     SessionFactory sessionFactory;
 
-/*    private Class<T> aClass;
+    private Class<T> aClass;
 
     BaseDaoImpl(Class<T> aClass) {
         this.aClass = aClass;
@@ -21,30 +23,29 @@ public abstract class BaseDaoImpl<T> {
     public void create(T entity) {
         Session session = openSession();
         session.save(entity);
-        session.getTransaction().commit();
     }
 
     public T read(Serializable id) {
         Session session = openSession();
         T entity = session.get(aClass, id);
-        session.getTransaction().commit();
         return entity;
     }
 
     public void update(T entity) {
         Session session = openSession();
         session.update(entity);
-        session.getTransaction().commit();
     }
 
     public void delete(Serializable id) {
         Session session = openSession();
         T entity = session.get(aClass, id);
         session.delete(entity);
-        session.getTransaction().commit();
-    }*/
+    }
 
-    public abstract List<T> find();
+    public List<T> getAll(){
+        String nameClass = (aClass.getSimpleName());
+        return openSession().createQuery("from " + nameClass).list();
+    }
 
     public boolean add(List<T> items) {
         return false;

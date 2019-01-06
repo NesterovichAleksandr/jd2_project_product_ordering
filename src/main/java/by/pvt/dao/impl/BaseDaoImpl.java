@@ -4,11 +4,12 @@ import by.pvt.dao.BaseDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.logging.Logger;
 
+@Transactional
 public abstract class BaseDaoImpl<T, PK extends Serializable> implements BaseDao<T, PK> {
 
     @Autowired
@@ -42,7 +43,7 @@ public abstract class BaseDaoImpl<T, PK extends Serializable> implements BaseDao
         session.delete(entity);
     }
 
-    public List<T> getAll(){
+    public List<T> getAll() {
         String nameClass = (aClass.getSimpleName());
         return openSession().createQuery("from " + nameClass).list();
     }

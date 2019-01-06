@@ -3,10 +3,14 @@ package by.pvt.service.impl;
 import by.pvt.dao.BaseDao;
 import by.pvt.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
 
+@Service
+@Transactional
 public abstract class BaseServiceImpl<T, PK extends Serializable> implements BaseService<T, PK> {
 
     private BaseDao<T, PK> dao;

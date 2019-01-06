@@ -1,6 +1,7 @@
-package by.pvt.service;
+package by.pvt.service.impl;
 
 import by.pvt.model.ProductOrder;
+import by.pvt.service.ProductOrderService;
 import by.pvt.service.impl.ProductOrderServiceImpl;
 import io.swagger.configuration.HibernateXMLConfTest;
 import org.junit.*;
@@ -33,7 +34,7 @@ public class ProductOrderServiceImplTest {
     HttpServletRequest httpServletRequest;
 
     @Resource
-    ProductOrderServiceImpl<ProductOrder> objUnderTest;
+    ProductOrderService objUnderTest;
 
     @Before
     public void setUp() throws Exception {

@@ -2,7 +2,7 @@ package by.pvt.api;
 
 import by.pvt.model.POSTREQProductOrder;
 import by.pvt.model.ProductOrder;
-import by.pvt.service.ProductOrderServiceImpl;
+import by.pvt.service.impl.ProductOrderServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;

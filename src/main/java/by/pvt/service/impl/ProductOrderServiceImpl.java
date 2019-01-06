@@ -1,4 +1,4 @@
-package by.pvt.service;
+package by.pvt.service.impl;
 
 import by.pvt.dao.impl.ProductOrderDaoImpl;
 import by.pvt.model.ProductOrder;

@@ -1,6 +1,7 @@
 package by.pvt.service;
 
 import by.pvt.model.ProductOrder;
+import by.pvt.service.impl.ProductOrderServiceImpl;
 import io.swagger.configuration.HibernateXMLConfTest;
 import org.junit.*;
 import org.junit.runner.*;

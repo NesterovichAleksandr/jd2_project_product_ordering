@@ -1,4 +1,4 @@
-package by.pvt.service;
+package by.pvt.service.impl;
 
 import java.util.List;
 

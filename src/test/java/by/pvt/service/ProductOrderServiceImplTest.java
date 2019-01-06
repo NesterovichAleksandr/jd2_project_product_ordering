@@ -43,14 +43,14 @@ public class ProductOrderServiceImplTest {
     public void list() {
         // given
         ProductOrder productOrder = productOrder("1");
-        objUnderTest.save(productOrder);
+        objUnderTest.create(productOrder);
 
         // when
         Serializable id = productOrder.getId();
         assertNotNull(id);
 
         // then
-        List<ProductOrder> partyAccounts = objUnderTest.list();
+        List<ProductOrder> partyAccounts = objUnderTest.getAll();
         assertEquals(1, partyAccounts.size());
         assertEquals(id, partyAccounts.get(0).getId());
     }

@@ -51,9 +51,9 @@ public class ProductOrderServiceImplTest {
         assertNotNull(id);
 
         // then
-        List<ProductOrder> partyAccounts = objUnderTest.getAll();
-        assertEquals(1, partyAccounts.size());
-        assertEquals(id, partyAccounts.get(0).getId());
+        List<ProductOrder> productOrders = objUnderTest.getAll();
+        assertEquals(1, productOrders.size());
+        assertEquals(id, productOrders.get(0).getId());
     }
 
     @After

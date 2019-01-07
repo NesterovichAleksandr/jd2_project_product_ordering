@@ -1,18 +1,27 @@
 package by.pvt.dao.impl;
 
+import by.pvt.dao.ProductOrderDao;
 import by.pvt.model.ProductOrder;
+import by.pvt.service.ProductOrderService;
 import by.pvt.service.impl.ProductOrderServiceImpl;
+import io.swagger.configuration.HibernateXMLConfTest;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.transaction.Transactional;
 
 import static org.junit.Assert.*;
 
+@Transactional
 public class ProductOrderDaoImplTest {
 
     @MockBean
@@ -22,7 +31,7 @@ public class ProductOrderDaoImplTest {
     HttpServletRequest httpServletRequest;
 
     @Resource
-    ProductOrderServiceImpl<ProductOrder> objUnderTest;
+    ProductOrderDao objUnderTest;
 
     @Before
     public void setUp() throws Exception {

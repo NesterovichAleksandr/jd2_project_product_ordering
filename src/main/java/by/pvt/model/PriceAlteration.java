@@ -1,18 +1,17 @@
 package by.pvt.model;
 
-import java.util.Objects;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.Enumerated;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 /**
  * Is an amount, usually of money, that modifies the price charged for an order item.
@@ -45,7 +44,7 @@ public class PriceAlteration {
     private Integer priority = null;
 
     @JsonProperty("price")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Price price = null;
 
     @JsonProperty("@type")

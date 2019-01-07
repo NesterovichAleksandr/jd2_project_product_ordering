@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.threeten.bp.OffsetDateTime;
 import org.springframework.validation.annotation.Validated;
 
@@ -95,7 +97,7 @@ public class ProductOrder {
     private String schemaLocation = null;
 
     @JsonProperty("Channel")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Channel channel = null;
 
     @JsonProperty("note")
@@ -104,27 +106,30 @@ public class ProductOrder {
 
     @JsonProperty("relatedParty")
     @Valid
-    @OneToMany
-    //@LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<RelatedPartyRef> relatedParty = null;
 
     @JsonProperty("payment")
     @Valid
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<PaymentRef> payment = null;
 
     @JsonProperty("billingAccount")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private BillingAccountRef billingAccount = null;
 
     @JsonProperty("orderTotalPrice")
     @Valid
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<OrderPrice> orderTotalPrice = null;
 
     @JsonProperty("orderItem")
     @Valid
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<OrderItem> orderItem = new ArrayList<OrderItem>();
 
     public ProductOrder id(String id) {

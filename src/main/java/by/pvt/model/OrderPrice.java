@@ -9,6 +9,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
@@ -54,7 +56,7 @@ public class OrderPrice extends BasePojo {
     private String schemaLocation = null;
 
     @JsonProperty("price")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Price price = null;
 
     @JsonProperty("priceAlteration")
@@ -63,7 +65,7 @@ public class OrderPrice extends BasePojo {
     private List<PriceAlteration> priceAlteration = null;
 
     @JsonProperty("billingAccount")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private BillingAccountRef billingAccount = null;
 
     public OrderPrice name(String name) {

@@ -9,6 +9,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.threeten.bp.OffsetDateTime;
 import org.springframework.validation.annotation.Validated;
 
@@ -67,7 +69,7 @@ public class POSTREQProductOrder extends BasePojo {
     private String schemaLocation = null;
 
     @JsonProperty("Channel")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Channel channel = null;
 
     @JsonProperty("note")
@@ -76,26 +78,30 @@ public class POSTREQProductOrder extends BasePojo {
 
     @JsonProperty("relatedParty")
     @Valid
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<RelatedPartyRef> relatedParty = null;
 
     @JsonProperty("payment")
     @Valid
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<PaymentRef> payment = null;
 
     @JsonProperty("billingAccount")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private BillingAccountRef billingAccount = null;
 
     @JsonProperty("orderTotalPrice")
     @Valid
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<OrderPrice> orderTotalPrice = null;
 
     @JsonProperty("orderItem")
     @Valid
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<POSTREQOrderItem> orderItem = new ArrayList<POSTREQOrderItem>();
 
     public POSTREQProductOrder externalId(String externalId) {

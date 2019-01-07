@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
@@ -49,44 +51,49 @@ public class POSTREQOrderItem {
     private String schemaLocation = null;
 
     @JsonProperty("appointment")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private AppointmentRef appointment = null;
 
     @JsonProperty("billingAccount")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private BillingAccountRef billingAccount = null;
 
     @JsonProperty("itemPrice")
     @Valid
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<OrderPrice> itemPrice = null;
 
     @JsonProperty("itemTotalPrice")
     @Valid
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<OrderPrice> itemTotalPrice = null;
 
     @JsonProperty("productOffering")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private ProductOffering productOffering = null;
 
     @JsonProperty("product")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Product product = null;
 
     @JsonProperty("orderItemRelationship")
     @Valid
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<OrderItemRelationShip> orderItemRelationship = null;
 
     @JsonProperty("qualification")
     @Valid
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<QualificationRef> qualification = null;
 
     @JsonProperty("payment")
     @Valid
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<PaymentRef> payment = null;
 
     @JsonProperty("itemTerm")
@@ -96,7 +103,8 @@ public class POSTREQOrderItem {
 
     @JsonProperty("orderItem")
     @Valid
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<OrderItem> orderItem = null;
 
     public POSTREQOrderItem id(String id) {

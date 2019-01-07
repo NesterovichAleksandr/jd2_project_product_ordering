@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
@@ -40,7 +42,8 @@ public class Product {
 
     @JsonProperty("place")
     @Valid
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Place> place = null;
 
     @JsonProperty("characteristic")
@@ -50,7 +53,8 @@ public class Product {
 
     @JsonProperty("relatedParty")
     @Valid
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<RelatedPartyRef> relatedParty = null;
 
     @JsonProperty("productRelationship")
@@ -59,7 +63,7 @@ public class Product {
     private List<ProductRelationship> productRelationship = null;
 
     @JsonProperty("productSpecification")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private ProductSpecificationRef productSpecification = null;
 
     public Product id(String id) {

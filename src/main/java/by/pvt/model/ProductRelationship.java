@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.Enumerated;
 import javax.persistence.OneToOne;
@@ -27,7 +28,7 @@ public class ProductRelationship {
     private RelationShipType type = null;
 
     @JsonProperty("product")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Product product = null;
 
     public ProductRelationship type(RelationShipType type) {

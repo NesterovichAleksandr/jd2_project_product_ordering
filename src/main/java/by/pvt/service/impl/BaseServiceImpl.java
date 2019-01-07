@@ -4,6 +4,8 @@ import by.pvt.dao.BaseDao;
 import by.pvt.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
@@ -20,22 +22,27 @@ public abstract class BaseServiceImpl<T, PK extends Serializable> implements Bas
         this.dao = dao;
     }
 
+    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.REPEATABLE_READ)
     public void create(T entity) {
         dao.create(entity);
     }
 
+    @Transactional
     public T read(PK id) {
         return dao.read(id);
     }
 
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void update(T entity) {
         dao.update(entity);
     }
 
+    @Transactional
     public void delete(PK id) {
         dao.delete(id);
     }
 
+    @Transactional(propagation =  Propagation.REQUIRED, readOnly = true)
     public List<T> getAll() {
         return dao.getAll();
     }

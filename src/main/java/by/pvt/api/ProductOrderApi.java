@@ -40,7 +40,7 @@ public interface ProductOrderApi {
             produces = {"application/json;charset=utf-8"},
             //consumes = { "application/json;charset=utf-8" },
             method = RequestMethod.GET)
-    ResponseEntity<List<ProductOrder>> productOrderFind(@ApiParam(value = "Attributes selection") /*@Valid*/ @RequestParam(value = "fields", required = false) String fields);
+    ResponseEntity<List<ProductOrder>> productOrderFind(@ApiParam(value = "Attributes selection") @Valid @RequestParam(value = "fields", required = false) String fields);
 
 
     @ApiOperation(value = "Retrieve a product order", nickname = "productOrderGet", notes = "This operation retrieves  a product order entity. Attribute  selection  is enabled for all first level attributes. Filtering on sub-resources  may  be available  depending on the compliance  level supported by an implementation.", response = ProductOrder.class, tags = {"ProductOrder",})
@@ -50,7 +50,7 @@ public interface ProductOrderApi {
             produces = {"application/json;charset=utf-8"},
             //consumes = { "application/json;charset=utf-8" },
             method = RequestMethod.GET)
-    ResponseEntity<ProductOrder> productOrderGet(@ApiParam(value = "", required = true) @PathVariable("productOrderId") String productOrderId, @ApiParam(value = "Attributes selection") /*@Valid*/ @RequestParam(value = "fields", required = false) String fields);
+    ResponseEntity<ProductOrder> productOrderGet(@ApiParam(value = "", required = true) @PathVariable("productOrderId") String productOrderId, @ApiParam(value = "Attributes selection") @Valid @RequestParam(value = "fields", required = false) String fields);
 
 
     @ApiOperation(value = "Patch a product order", nickname = "productOrderPatch", notes = "This    operation    allows    partial    updates    of    a    product    order    entity.    Support    of    json/merge (https://tools.ietf.org/html/rfc7386)  is  mandatory,  support  of  json/patch  (http://tools.ietf.org/html/rfc5789)  is optional. Patchable and not patchable attributes are provided in the specifications document.", response = ProductOrder.class, tags = {"ProductOrder",})

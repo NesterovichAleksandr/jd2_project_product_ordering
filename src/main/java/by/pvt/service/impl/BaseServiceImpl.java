@@ -37,7 +37,7 @@ public abstract class BaseServiceImpl<T, PK extends Serializable> implements Bas
         dao.update(entity);
     }
 
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void delete(PK id) {
         dao.delete(id);
     }

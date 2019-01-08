@@ -48,10 +48,6 @@ public abstract class BaseDaoImpl<T, PK extends Serializable> implements BaseDao
         return openSession().createQuery("from " + nameClass).list();
     }
 
-    public boolean add(List<T> items) {
-        return false;
-    }
-
     Session openSession() {
         return sessionFactory.getCurrentSession();
     }

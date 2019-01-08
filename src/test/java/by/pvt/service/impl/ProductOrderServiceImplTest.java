@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.NotNull;
 
 import java.io.Serializable;
 import java.util.List;
@@ -54,6 +55,30 @@ public class ProductOrderServiceImplTest {
         List<ProductOrder> productOrders = objUnderTest.getAll();
         assertEquals(1, productOrders.size());
         assertEquals(id, productOrders.get(0).getId());
+    }
+
+    @Test
+    public void createReadUpdateDelete() {
+        //create
+        ProductOrder productOrder = new ProductOrder();
+        productOrder.setDescription("TestDescription");
+        objUnderTest.create(productOrder);
+        String id = productOrder.getId();
+        assertNotNull(id);
+
+        //read
+        ProductOrder productOrder1 = objUnderTest.read(id);
+        assertEquals("TestDescription", productOrder1.getDescription());
+/*
+        //update
+        productOrder1.setCategory("TestCategory");
+        objUnderTest.update(productOrder1);
+        ProductOrder productOrderTestUpdate = objUnderTest.read(id);
+        assertEquals("TestCategory", productOrderTestUpdate.getCategory());
+        */
+        //delete
+        objUnderTest.delete(id);
+        //assertNull(objUnderTest.read(id));
     }
 
     @After

@@ -27,7 +27,7 @@ public abstract class BaseServiceImpl<T, PK extends Serializable> implements Bas
         dao.create(entity);
     }
 
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = true)
     public T read(PK id) {
         return dao.read(id);
     }

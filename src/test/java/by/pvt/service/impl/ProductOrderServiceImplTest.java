@@ -69,16 +69,17 @@ public class ProductOrderServiceImplTest {
         //read
         ProductOrder productOrder1 = objUnderTest.read(id);
         assertEquals("TestDescription", productOrder1.getDescription());
-/*
+
         //update
         productOrder1.setCategory("TestCategory");
         objUnderTest.update(productOrder1);
         ProductOrder productOrderTestUpdate = objUnderTest.read(id);
         assertEquals("TestCategory", productOrderTestUpdate.getCategory());
-        */
+
         //delete
         objUnderTest.delete(id);
-        //assertNull(objUnderTest.read(id));
+        ProductOrder productOrderDelete = objUnderTest.read(id);
+        assertNull(productOrderDelete);
     }
 
     @After

@@ -76,8 +76,7 @@ public class AppointmentRefServiceImplTest {
         String id2 = appointmentRef2.getId();
 
         List<AppointmentRef> appointmentRefList = objUnderTest.getAll();
-        assertEquals(id1, appointmentRefList.get(0).getId());
-        assertEquals(id2, appointmentRefList.get(1).getId());
+        assertEquals(2, appointmentRefList.size());
 
         objUnderTest.delete(id1);
         objUnderTest.delete(id2);

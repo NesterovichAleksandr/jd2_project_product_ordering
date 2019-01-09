@@ -48,13 +48,15 @@ public class ProductOrderServiceImplTest {
         objUnderTest.create(productOrder);
 
         // when
-        Serializable id = productOrder.getId();
+        String id = productOrder.getId();
         assertNotNull(id);
 
         // then
         List<ProductOrder> productOrders = objUnderTest.getAll();
         assertEquals(1, productOrders.size());
         assertEquals(id, productOrders.get(0).getId());
+
+        objUnderTest.delete(id);
     }
 
     @Test

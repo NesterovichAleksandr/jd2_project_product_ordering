@@ -2,27 +2,32 @@ package by.pvt.dao.impl;
 
 import by.pvt.dao.ProductOrderDao;
 import by.pvt.model.ProductOrder;
-import by.pvt.service.ProductOrderService;
-import by.pvt.service.impl.ProductOrderServiceImpl;
 import io.swagger.configuration.HibernateXMLConfTest;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(
+        classes = {HibernateXMLConfTest.class},
+        loader = AnnotationConfigContextLoader.class)
 @Transactional
 public class ProductOrderDaoImplTest {
+
+    @Autowired
+    ProductOrderDao productOrderDao;
 
     @MockBean
     com.fasterxml.jackson.databind.ObjectMapper objectMapper;
@@ -30,14 +35,11 @@ public class ProductOrderDaoImplTest {
     @MockBean
     HttpServletRequest httpServletRequest;
 
-    @Resource
-    ProductOrderDao objUnderTest;
-
     @Before
     public void setUp() throws Exception {
     }
 
-    @Ignore
+    @Test
     public void crud() {
         ProductOrder productOrder = new ProductOrder();
         productOrder.setDescription("DescriptionTestCRUD");
@@ -45,23 +47,40 @@ public class ProductOrderDaoImplTest {
         productOrder.setHref("localhost/TestCRUD");
 
         //create
-        objUnderTest.create(productOrder);
+        productOrderDao.create(productOrder);
         String id = productOrder.getId();
         assertNotNull(id);
 
         //read
-        ProductOrder productOrder1 = objUnderTest.read(id);
+        ProductOrder productOrder1 = productOrderDao.read(id);
         assertEquals("DescriptionTestCRUD", productOrder1.getDescription());
 
         //update
         productOrder1.setDescription("New DescriptionTestCRUD");
-        objUnderTest.update(productOrder1);
-        ProductOrder productOrder2 = objUnderTest.read(id);
+        productOrderDao.update(productOrder1);
+        ProductOrder productOrder2 = productOrderDao.read(id);
         assertEquals("New DescriptionTestCRUD", productOrder2.getDescription());
 
         //delete
-        objUnderTest.delete(id);
-        assertNull(objUnderTest.read(id));
+        productOrderDao.delete(id);
+        ProductOrder productOrderDelete = productOrderDao.read(id);
+        assertNull(productOrderDelete);
+    }
+
+    @Test
+    public void getAll() {
+        ProductOrder productOrder1 = new ProductOrder();
+        ProductOrder productOrder2 = new ProductOrder();
+        productOrderDao.create(productOrder1);
+        productOrderDao.create(productOrder2);
+        String id1 = productOrder1.getId();
+        String id2 = productOrder2.getId();
+
+        List<ProductOrder> productOrderList = productOrderDao.getAll();
+        assertEquals(2, productOrderList.size());
+
+        productOrderDao.delete(id1);
+        productOrderDao.delete(id2);
     }
 
     @After

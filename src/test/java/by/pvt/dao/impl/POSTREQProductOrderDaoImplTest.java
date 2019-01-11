@@ -48,8 +48,8 @@ public class POSTREQProductOrderDaoImplTest {
         pOSTREQProductOrder.setPriority(PriorityType._3);
         pOSTREQProductOrder.setDescription("Description");
         pOSTREQProductOrder.setCategory("Category");
-        //pOSTREQProductOrder.setRequestedStartDate(new OffsetDateTime());
-        //pOSTREQProductOrder.setRequestedCompletionDate(new OffsetDateTime());
+        pOSTREQProductOrder.setRequestedStartDate(OffsetDateTime.now());
+        pOSTREQProductOrder.setRequestedCompletionDate(OffsetDateTime.now().plusDays(1));
         pOSTREQProductOrder.setNotificationContact("NotificationContact");
         pOSTREQProductOrder.setBaseType("BaseType");
         pOSTREQProductOrder.setType("Type");

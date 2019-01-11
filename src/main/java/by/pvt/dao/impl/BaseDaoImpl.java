@@ -47,7 +47,7 @@ public abstract class BaseDaoImpl<T, PK extends Serializable> implements BaseDao
         Session session = openSession();
         T entity = session.get(aClass, id);
         session.delete(entity);
-        log.info(aClass + " delete(): id=" + id);
+        log.info(aClass + " delete(): id=" + id + "\ndelete entity: " + entity);
     }
 
     public List<T> getAll() {

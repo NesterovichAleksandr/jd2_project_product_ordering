@@ -33,7 +33,7 @@ public abstract class BaseServiceImpl<T, PK extends Serializable> implements Bas
 
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = true)
     public T read(PK id) {
-        log.info("read(): id=" + id + "\t: " + getClass());
+        log.info("read(): id=" + id + "\t" + getClass());
         return dao.read(id);
     }
 
@@ -45,13 +45,13 @@ public abstract class BaseServiceImpl<T, PK extends Serializable> implements Bas
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void delete(PK id) {
-        log.info("delete(): id=" + id + "\t: " + getClass());
+        log.info("delete(): id=" + id + "\t" + getClass());
         dao.delete(id);
     }
 
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public List<T> getAll() {
-        log.info("getAll(): " + dao.getAll() + "\t: " + getClass());
+        log.info("getAll(): " + dao.getAll() + "\t" + getClass());
         return dao.getAll();
     }
 }

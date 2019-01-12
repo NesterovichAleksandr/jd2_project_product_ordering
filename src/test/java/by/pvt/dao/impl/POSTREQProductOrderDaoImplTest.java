@@ -55,12 +55,26 @@ public class POSTREQProductOrderDaoImplTest {
         pOSTREQProductOrder.setType("Type");
         pOSTREQProductOrder.setSchemaLocation("SchemaLocation");
         pOSTREQProductOrder.setChannel(new Channel());
-        pOSTREQProductOrder.setNote(new Note());
-        pOSTREQProductOrder.setRelatedParty(List.of(new RelatedPartyRef()));
-        pOSTREQProductOrder.setPayment(List.of(new PaymentRef()));
-        pOSTREQProductOrder.setBillingAccount(new BillingAccountRef());
-        pOSTREQProductOrder.setOrderTotalPrice(List.of(new OrderPrice()));
-        pOSTREQProductOrder.setOrderItem(List.of(new POSTREQOrderItem()));
+        Note note = new Note();
+        note.setText("Text");
+        pOSTREQProductOrder.setNote(note);
+        RelatedPartyRef relatedPartyRef = new RelatedPartyRef();
+        relatedPartyRef.setHref("Href");
+        relatedPartyRef.setRole("Role");
+        pOSTREQProductOrder.setRelatedParty(List.of());
+        PaymentRef paymentRef = new PaymentRef();
+        paymentRef.setHref("Href");
+        pOSTREQProductOrder.setPayment(List.of(paymentRef));
+        BillingAccountRef billingAccountRef = new BillingAccountRef();
+        billingAccountRef.setHref("Href");
+        pOSTREQProductOrder.setBillingAccount(billingAccountRef);
+        OrderPrice orderPrice = new OrderPrice();
+        orderPrice.setPriceType(PriceType.ONETIME);
+        orderPrice.setPrice(new Price());
+        pOSTREQProductOrder.setOrderTotalPrice(List.of(orderPrice));
+        POSTREQOrderItem postreqOrderItem = new POSTREQOrderItem();
+        postreqOrderItem.setAction(ActionType.ADD);
+        pOSTREQProductOrder.setOrderItem(List.of(postreqOrderItem));
 
         //create
         pOSTREQProductOrderDao.create(pOSTREQProductOrder);

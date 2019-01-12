@@ -54,6 +54,7 @@ public class POSTREQOrderItemDaoImplTest {
         pOSTREQOrderItem.setBillingAccount(billingAccountRef);
         pOSTREQOrderItem.setItemPrice(List.of());
         ProductOffering productOffering = new ProductOffering();
+        productOffering.setHref("Href");
         pOSTREQOrderItem.setProductOffering(productOffering);
         Product product = new Product();
         pOSTREQOrderItem.setProduct(product);

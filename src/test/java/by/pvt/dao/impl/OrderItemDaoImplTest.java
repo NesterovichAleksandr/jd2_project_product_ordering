@@ -55,6 +55,7 @@ public class OrderItemDaoImplTest {
         orderItem.setBillingAccount(billingAccountRef);
         orderItem.setItemPrice(List.of());
         ProductOffering productOffering = new ProductOffering();
+        productOffering.setHref("Href");
         orderItem.setProductOffering(productOffering);
         Product product = new Product();
         orderItem.setProduct(product);

@@ -43,8 +43,11 @@ public class PriceDaoImplTest {
     @Test
     public void crud() {
         Price price = new Price();
-        price.setTaxIncludedAmount(new Money());
-        price.setDutyFreeAmount(new Money());
+        Money money = new Money();
+        money.setUnit("Unit");
+        money.setValue(34F);
+        price.setTaxIncludedAmount(money);
+        price.setDutyFreeAmount(money);
         price.setTaxRate(12.0F);
         price.setPercentage(13F);
         price.setType("TestType");

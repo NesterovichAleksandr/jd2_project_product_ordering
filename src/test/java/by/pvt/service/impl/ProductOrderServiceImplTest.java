@@ -7,6 +7,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -33,7 +34,7 @@ public class ProductOrderServiceImplTest {
     @MockBean
     HttpServletRequest httpServletRequest;
 
-    @Resource
+    @Autowired
     ProductOrderService objUnderTest;
 
     @Before
@@ -55,7 +56,7 @@ public class ProductOrderServiceImplTest {
         assertEquals(1, productOrders.size());
         assertEquals(id, productOrders.get(0).getId());
 
-        //objUnderTest.delete(id);
+        objUnderTest.delete(id);
     }
 
     @Test
@@ -260,8 +261,7 @@ public class ProductOrderServiceImplTest {
                 productOffering("1" + "_OrderItem")
         );
         orderItem.setProduct(
-                new Product()
-                //product("1" + "_OrderItem" + prefix)
+                product("1" + "_OrderItem" + prefix)
         );
         orderItem.setOrderItemRelationship(List.of(
                 orderItemRelationShip("1" + "_OrderItem"),

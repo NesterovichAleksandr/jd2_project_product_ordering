@@ -56,6 +56,7 @@ public class OrderPriceDaoImplTest {
         orderPrice.setPrice(price);
         orderPrice.setPriceAlteration(List.of());
         BillingAccountRef billingAccountRef = new BillingAccountRef();
+        billingAccountRef.setHref("Href");
         orderPrice.setBillingAccount(billingAccountRef);
 
         //create
@@ -81,13 +82,14 @@ public class OrderPriceDaoImplTest {
 
     @Test
     public void getAll() {
-        Price price = new Price();
         OrderPrice orderPrice1 = new OrderPrice();
         orderPrice1.setPriceType(PriceType.ONETIME);
-        orderPrice1.setPrice(price);
+        Price price1 = new Price();
+        orderPrice1.setPrice(price1);
         OrderPrice orderPrice2 = new OrderPrice();
         orderPrice2.setPriceType(PriceType.USAGE);
-        orderPrice2.setPrice(price);
+        Price price2 = new Price();
+        orderPrice2.setPrice(price2);
         orderPriceDao.create(orderPrice1);
         orderPriceDao.create(orderPrice2);
         Long id1 = orderPrice1.getId();

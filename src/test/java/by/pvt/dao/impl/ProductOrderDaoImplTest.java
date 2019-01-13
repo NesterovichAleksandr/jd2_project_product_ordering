@@ -63,9 +63,9 @@ public class ProductOrderDaoImplTest {
         assertEquals("New DescriptionTestCRUD", productOrder2.getDescription());
 
         //delete
-        /*productOrderDao.delete(id);
+        productOrderDao.delete(id);
         ProductOrder productOrderDelete = productOrderDao.read(id);
-        assertNull(productOrderDelete);*/
+        assertNull(productOrderDelete);
     }
 
     @Test
@@ -80,8 +80,8 @@ public class ProductOrderDaoImplTest {
         List<ProductOrder> productOrderList = productOrderDao.getAll();
         assertEquals(2, productOrderList.size());
 
-       /* productOrderDao.delete(id1);
-        productOrderDao.delete(id2);*/
+        productOrderDao.delete(id1);
+        productOrderDao.delete(id2);
     }
 
     @After

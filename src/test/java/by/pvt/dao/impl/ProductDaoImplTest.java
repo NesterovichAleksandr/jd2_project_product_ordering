@@ -44,11 +44,26 @@ public class ProductDaoImplTest {
         Product product = new Product();
         product.setHref("TestHref");
         product.setName("TestName");
-        product.setPlace(List.of(new Place()));
-        product.setCharacteristic(List.of(new ProductCharacteristic()));
-        product.setRelatedParty(List.of(new RelatedPartyRef()));
-        product.setProductRelationship(List.of(new ProductRelationship()));
-        product.setProductSpecification(new ProductSpecificationRef());
+        product.setPlace(List.of(
+                new Place()
+                        .role("role")
+        ));
+        product.setCharacteristic(List.of(
+                new ProductCharacteristic()
+                        .name("name")
+                        .type("type")
+                        .value("value")));
+        product.setRelatedParty(List.of(
+                new RelatedPartyRef()
+                        .role("role")
+                        .href("href")
+        ));
+        product.setProductRelationship(List.of(
+                new ProductRelationship()
+                        .type(RelationShipType.HASCHILD)
+                        .product(new Product())
+        ));
+        product.setProductSpecification(new ProductSpecificationRef().href("href"));
 
         //create
         productDao.create(product);

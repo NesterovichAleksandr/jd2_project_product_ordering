@@ -59,7 +59,7 @@ public class Product {
 
     @JsonProperty("productRelationship")
     @Valid
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<ProductRelationship> productRelationship = null;
 
     @JsonProperty("productSpecification")

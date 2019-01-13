@@ -59,7 +59,7 @@ public class Product {
 
     @JsonProperty("productRelationship")
     @Valid
-    @ElementCollection
+    @OneToMany
     private List<ProductRelationship> productRelationship = null;
 
     @JsonProperty("productSpecification")

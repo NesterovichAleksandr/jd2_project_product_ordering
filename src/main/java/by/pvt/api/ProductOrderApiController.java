@@ -119,7 +119,7 @@ public class ProductOrderApiController implements ProductOrderApi {
                 updateProductOrder.setType(productOrder.getType());
                 updateProductOrder.setSchemaLocation(productOrder.getSchemaLocation());
                 updateProductOrder.setChannel(
-                        new Channel()
+                        updateProductOrder.getChannel()
                                 .href(productOrder.getChannel().getHref())
                                 .name(productOrder.getChannel().getName())
                                 .role(productOrder.getChannel().getRole())

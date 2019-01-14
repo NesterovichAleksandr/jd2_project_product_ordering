@@ -1,8 +1,6 @@
 package by.pvt.api;
 
-import by.pvt.model.Channel;
-import by.pvt.model.POSTREQProductOrder;
-import by.pvt.model.ProductOrder;
+import by.pvt.model.*;
 import by.pvt.service.ProductOrderService;
 import by.pvt.utils.CreateAndFillEntity;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -132,10 +130,19 @@ public class ProductOrderApiController implements ProductOrderApi {
                                 .name(productOrder.getBillingAccount().getName())
                                 .type(productOrder.getBillingAccount().getType())
                 );
-//                updateProductOrder.setRelatedParty(productOrder.getRelatedParty());
-//                updateProductOrder.setPayment(productOrder.getPayment());
-//                updateProductOrder.setOrderTotalPrice(productOrder.getOrderTotalPrice());
-//                updateProductOrder.setOrderItem(productOrder.getOrderItem());
+                updateProductOrder.setRelatedParty(List.of(
+                        updateProductOrder.getRelatedParty().get(0)
+                                .href(productOrder.getRelatedParty().get(0).getHref())
+                                .name(productOrder.getRelatedParty().get(0).getName())
+                                .role(productOrder.getRelatedParty().get(0).getRole())
+                                .type(productOrder.getRelatedParty().get(0).getType())
+                ));
+                updateProductOrder.setPayment(List.of(
+                ));
+                updateProductOrder.setOrderTotalPrice(List.of(
+                ));
+                updateProductOrder.setOrderItem(List.of(
+                ));
 
                 productOrderBaseService.update(updateProductOrder);
                 return new ResponseEntity<ProductOrder>(HttpStatus.OK);

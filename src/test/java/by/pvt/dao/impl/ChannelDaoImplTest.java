@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -40,6 +41,7 @@ public class ChannelDaoImplTest {
     }
 
     @Test
+    @Commit
     public void crud() {
         Channel channel = new Channel();
         channel.setHref("TestHref");
@@ -69,6 +71,7 @@ public class ChannelDaoImplTest {
     }
 
     @Test
+    @Commit
     public void getAll() {
         Channel channel1 = new Channel();
         Channel channel2 = new Channel();

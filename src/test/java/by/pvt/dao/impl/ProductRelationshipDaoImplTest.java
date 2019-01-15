@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -42,6 +43,7 @@ public class ProductRelationshipDaoImplTest {
     }
 
     @Test
+    @Commit
     public void crud() {
         ProductRelationship productRelationship = new ProductRelationship();
         productRelationship.setType(RelationShipType.BRINGS);
@@ -69,6 +71,7 @@ public class ProductRelationshipDaoImplTest {
     }
 
     @Test
+    @Commit
     public void getAll() {
         ProductRelationship productRelationship1 = new ProductRelationship();
         productRelationship1.setType(RelationShipType.BRINGS);

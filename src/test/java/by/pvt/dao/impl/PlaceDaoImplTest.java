@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -40,6 +41,7 @@ public class PlaceDaoImplTest {
     }
 
     @Test
+    @Commit
     public void crud() {
         Place place = new Place();
         place.setHref("TestHref");
@@ -70,6 +72,7 @@ public class PlaceDaoImplTest {
     }
 
     @Test
+    @Commit
     public void getAll() {
         Place place1 = new Place();
         place1.setRole("Role1");

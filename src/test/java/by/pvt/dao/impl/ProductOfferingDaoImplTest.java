@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -40,6 +41,7 @@ public class ProductOfferingDaoImplTest {
     }
 
     @Test
+    @Commit
     public void crud() {
         ProductOffering productOffering = new ProductOffering();
         productOffering.setHref("TestHref");
@@ -68,6 +70,7 @@ public class ProductOfferingDaoImplTest {
     }
 
     @Test
+    @Commit
     public void getAll() {
         ProductOffering productOffering1 = new ProductOffering();
         productOffering1.setHref("Href1");

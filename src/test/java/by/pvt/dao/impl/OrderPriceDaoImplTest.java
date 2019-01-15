@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -43,6 +44,7 @@ public class OrderPriceDaoImplTest {
     }
 
     @Test
+    @Commit
     public void crud() {
         OrderPrice orderPrice = new OrderPrice();
         orderPrice.setName("TestName");
@@ -81,6 +83,7 @@ public class OrderPriceDaoImplTest {
     }
 
     @Test
+    @Commit
     public void getAll() {
         OrderPrice orderPrice1 = new OrderPrice();
         orderPrice1.setPriceType(PriceType.ONETIME);

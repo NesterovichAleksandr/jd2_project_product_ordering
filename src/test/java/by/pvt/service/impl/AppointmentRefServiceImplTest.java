@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -40,6 +41,7 @@ public class AppointmentRefServiceImplTest {
     }
 
     @Test
+    @Commit
     public void createReadUpdateDeleteTest() {
         //create
         AppointmentRef appointmentRef = new AppointmentRef();
@@ -65,6 +67,7 @@ public class AppointmentRefServiceImplTest {
     }
 
     @Test
+    @Commit
     public void getAllTest() {
         AppointmentRef appointmentRef1 = new AppointmentRef();
         appointmentRef1.setHref("TestHref1");

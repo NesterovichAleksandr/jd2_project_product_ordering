@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -40,6 +41,7 @@ public class OrderItemDaoImplTest {
     }
 
     @Test
+    @Commit
     public void crud() {
         OrderItem orderItem = new OrderItem();
         orderItem.setAction(ActionType.ADD);
@@ -87,6 +89,7 @@ public class OrderItemDaoImplTest {
     }
 
     @Test
+    @Commit
     public void getAll() {
         OrderItem orderItem1 = new OrderItem();
         orderItem1.setAction(ActionType.ADD);

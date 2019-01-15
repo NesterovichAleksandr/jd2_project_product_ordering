@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -40,6 +41,7 @@ public class AppointmentRefDaoImplTest {
     }
 
     @Test
+    @Commit
     public void crud() {
         AppointmentRef appointmentRef = new AppointmentRef();
         appointmentRef.setHref("TestHref");
@@ -67,6 +69,7 @@ public class AppointmentRefDaoImplTest {
     }
 
     @Test
+    @Commit
     public void getAll() {
         AppointmentRef appointmentRef1 = new AppointmentRef();
         appointmentRef1.setHref("Href1");

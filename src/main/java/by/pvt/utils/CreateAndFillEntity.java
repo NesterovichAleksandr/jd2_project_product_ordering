@@ -169,12 +169,12 @@ public class CreateAndFillEntity {
                 billingAccountRef("1" + "_OrderItem")
         );
         orderItem.setItemPrice(List.of(
-//                orderPrice("1" + "_OrderItem"),
-//                orderPrice("2" + "_OrderItem")
+                orderPrice("1" + "_OrderItem"),
+                orderPrice("2" + "_OrderItem")
         ));
         orderItem.setItemTotalPrice(List.of(
-//                orderPrice("1" + "_OrderItem"),
-//                orderPrice("2" + "_OrderItem")
+                orderPrice("1" + "_OrderItem"),
+                orderPrice("2" + "_OrderItem")
         ));
         orderItem.setProductOffering(
                 productOffering("1" + "_OrderItem")
@@ -198,9 +198,7 @@ public class CreateAndFillEntity {
                 orderTerm("1" + "_OrderItem"),
                 orderTerm("2" + "_OrderItem")
         ));
-        orderItem.setOrderItem(List.of(
-                //orderItem("1" + "_OrderItem")
-        ));
+        orderItem.setOrderItem(List.of());
         return orderItem;
     }
 

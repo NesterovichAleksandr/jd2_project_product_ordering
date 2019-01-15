@@ -4,8 +4,6 @@ import by.pvt.dao.BaseDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
@@ -26,14 +24,12 @@ public abstract class BaseDaoImpl<T, PK extends Serializable> implements BaseDao
         this.aClass = aClass;
     }
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.REPEATABLE_READ)
     public void create(T entity) {
         Session session = openSession();
         session.save(entity);
         log.info(aClass + " create(): \n" + entity);
     }
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = true)
     public T read(Serializable id) {
         Session session = openSession();
         T entity = session.get(aClass, id);
@@ -41,14 +37,12 @@ public abstract class BaseDaoImpl<T, PK extends Serializable> implements BaseDao
         return entity;
     }
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void update(T entity) {
         Session session = openSession();
         session.update(entity);
         log.info(aClass + " update(): \n" + entity);
     }
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void delete(Serializable id) {
         Session session = openSession();
         T entity = session.get(aClass, id);
@@ -56,7 +50,6 @@ public abstract class BaseDaoImpl<T, PK extends Serializable> implements BaseDao
         log.info(aClass + " delete(): id=" + id + "\ndelete entity: " + entity);
     }
 
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public List<T> getAll() {
         String nameClass = (aClass.getSimpleName());
         List list = openSession().createQuery("from " + nameClass).list();

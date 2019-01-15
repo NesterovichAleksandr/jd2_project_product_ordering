@@ -72,6 +72,8 @@ public class OrderItem {
     @JsonProperty("itemTotalPrice")
     @Valid
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "orderitem_itemtotalprice")
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<OrderPrice> itemTotalPrice = null;
 

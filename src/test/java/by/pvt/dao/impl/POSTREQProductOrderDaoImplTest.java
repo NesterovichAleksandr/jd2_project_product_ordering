@@ -63,7 +63,7 @@ public class POSTREQProductOrderDaoImplTest {
         RelatedPartyRef relatedPartyRef = new RelatedPartyRef();
         relatedPartyRef.setHref("Href");
         relatedPartyRef.setRole("Role");
-        pOSTREQProductOrder.setRelatedParty(List.of());
+        pOSTREQProductOrder.setRelatedParty(List.of(relatedPartyRef));
         PaymentRef paymentRef = new PaymentRef();
         paymentRef.setHref("Href");
         pOSTREQProductOrder.setPayment(List.of(paymentRef));

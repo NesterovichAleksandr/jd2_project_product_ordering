@@ -67,6 +67,8 @@ public class POSTREQOrderItem {
     @JsonProperty("itemTotalPrice")
     @Valid
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "postreqorderitem_itemtotalprice")
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<OrderPrice> itemTotalPrice = null;
 

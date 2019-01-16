@@ -66,18 +66,36 @@ public class ProductOrderConvectorImpl {
                     .updateConvectorToEntity(entity.getBillingAccount(), dto.getBillingAccount())
             );
         }
-        if (dto.getRelatedParty() != null && !dto.getRelatedParty().isEmpty()) {
-            entity.setRelatedParty(new RelatedPartyRefConvectorImpl()
-                    .updateConvectorToEntityList(entity.getRelatedParty(), dto.getRelatedParty())
-            );
+        if (dto.getRelatedParty() != null) {
+            if (entity.getRelatedParty() == null) {
+                entity.setRelatedParty(List.of());
+            }
+            if (!dto.getRelatedParty().isEmpty()) {
+                entity.setRelatedParty(new RelatedPartyRefConvectorImpl()
+                        .updateConvectorToEntityList(entity.getRelatedParty(), dto.getRelatedParty())
+                );
+            }
         }
-        if (dto.getPayment() != null && !dto.getPayment().isEmpty()) {
-            entity.setPayment(new PaymentRefConvectorImpl()
-                    .updateConvectorToEntityList(entity.getPayment(), dto.getPayment())
-            );
+        if (dto.getPayment() != null) {
+            if (entity.getPayment() == null) {
+                entity.setPayment(List.of());
+            }
+            if (!dto.getPayment().isEmpty()) {
+                entity.setPayment(new PaymentRefConvectorImpl()
+                        .updateConvectorToEntityList(entity.getPayment(), dto.getPayment())
+                );
+            }
         }
-        entity.setOrderTotalPrice(List.of(
-        ));
+        if (dto.getOrderTotalPrice() != null) {
+            if (entity.getOrderTotalPrice() == null) {
+                entity.setOrderTotalPrice(List.of());
+            }
+            if (!dto.getOrderTotalPrice().isEmpty()) {
+                entity.setOrderTotalPrice(new OrderPriceConvectorImpl()
+                        .updateConvectorToEntityList(entity.getOrderTotalPrice(), dto.getOrderTotalPrice())
+                );
+            }
+        }
         entity.setOrderItem(List.of(
         ));
 

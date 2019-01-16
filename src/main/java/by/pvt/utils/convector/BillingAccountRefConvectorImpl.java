@@ -17,4 +17,14 @@ public class BillingAccountRefConvectorImpl {
         }
         return entity;
     }
+
+    public BillingAccountRef convectorToNewEntity(BillingAccountRef dto) {
+        BillingAccountRef billingAccountRef = new BillingAccountRef();
+
+        billingAccountRef.setHref(dto.getHref());
+        billingAccountRef.setName(dto.getName());
+        billingAccountRef.setType(dto.getType());
+
+        return billingAccountRef;
+    }
 }

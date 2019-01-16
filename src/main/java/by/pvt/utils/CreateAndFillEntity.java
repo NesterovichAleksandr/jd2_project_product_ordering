@@ -7,6 +7,49 @@ import java.util.List;
 
 public class CreateAndFillEntity {
 
+    public static POSTREQProductOrder postreqProductOrder(String prefix) {
+        POSTREQProductOrder postreqProductOrder = new POSTREQProductOrder();
+        postreqProductOrder.setExternalId("ExternalId_" + prefix);
+        postreqProductOrder.setPriority(PriorityType._3);
+        postreqProductOrder.setDescription("Description_" + prefix);
+        postreqProductOrder.setCategory("Category_" + prefix);
+        postreqProductOrder.setRequestedStartDate(OffsetDateTime.now());
+        postreqProductOrder.setRequestedCompletionDate(OffsetDateTime.now().plusDays(1));
+        postreqProductOrder.setNotificationContact("NotificationContact_" + prefix);
+        postreqProductOrder.setBaseType("BaseType_" + prefix);
+        postreqProductOrder.setType("Type_" + prefix);
+        postreqProductOrder.setSchemaLocation("SchemaLocation_" + prefix);
+        postreqProductOrder.setChannel(channel(prefix + "_POSTREQProductOrder"));
+        postreqProductOrder.setNote(note(prefix + "_POSTREQProductOrder"));
+        postreqProductOrder.setRelatedParty(List.of(relatedPartyRef(prefix + "_POSTREQProductOrder")));
+        postreqProductOrder.setPayment(List.of(paymentRef(prefix + "_POSTREQProductOrder")));
+        postreqProductOrder.setBillingAccount(billingAccountRef(prefix + "_POSTREQProductOrder"));
+        postreqProductOrder.setOrderTotalPrice(List.of(orderPrice(prefix + "_POSTREQProductOrder")));
+        postreqProductOrder.setOrderItem(List.of(postreqOrderItem(prefix + "_POSTREQProductOrder")));
+
+        return postreqProductOrder;
+    }
+
+    public static POSTREQOrderItem postreqOrderItem(String prefix) {
+        POSTREQOrderItem postreqOrderItem = new POSTREQOrderItem();
+        postreqOrderItem.setAction(ActionType.ADD);
+        postreqOrderItem.setQuantity(345L);
+        postreqOrderItem.setType("Type_" + prefix);
+        postreqOrderItem.setSchemaLocation("SchemaLocation_" + prefix);
+        postreqOrderItem.setAppointment(appointmentRef(prefix + "_POSTREQOrderItem"));
+        postreqOrderItem.setBillingAccount(billingAccountRef(prefix + "_POSTREQOrderItem"));
+        postreqOrderItem.setItemPrice(List.of(orderPrice(prefix + "_POSTREQOrderItem")));
+        postreqOrderItem.setProductOffering(productOffering(prefix + "_POSTREQOrderItem"));
+        postreqOrderItem.setProduct(product(prefix + "_POSTREQOrderItem"));
+        postreqOrderItem.setOrderItemRelationship(List.of(orderItemRelationShip(prefix + "_POSTREQOrderItem")));
+        postreqOrderItem.setQualification(List.of(qualificationRef(prefix + "_POSTREQOrderItem")));
+        postreqOrderItem.setPayment(List.of(paymentRef(prefix + "_POSTREQOrderItem")));
+        postreqOrderItem.setItemTerm(List.of(orderTerm(prefix + "_POSTREQOrderItem")));
+        postreqOrderItem.setOrderItem(List.of(orderItem(prefix + "_POSTREQOrderItem")));
+
+        return postreqOrderItem;
+    }
+
     public static ProductOrder productOrder(String prefix) {
         ProductOrder productOrder = new ProductOrder();
         productOrder.setHref("Href_" + prefix);

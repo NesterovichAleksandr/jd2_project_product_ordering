@@ -73,8 +73,11 @@ public class ProductOrderConvectorImpl {
                         .role(dto.getRelatedParty().get(0).getRole())
                         .type(dto.getRelatedParty().get(0).getType())
         ));
-        entity.setPayment(List.of(
-        ));
+        if (dto.getPayment() !=null && !dto.getPayment().isEmpty()){
+            entity.setPayment(new PaymentRefConvectorImpl()
+                    .updateConvectorToEntityList(entity.getPayment(), dto.getPayment())
+            );
+        }
         entity.setOrderTotalPrice(List.of(
         ));
         entity.setOrderItem(List.of(

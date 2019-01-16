@@ -54,12 +54,8 @@ public class ProductOrderConvectorImpl {
             entity.setSchemaLocation(dto.getSchemaLocation());
         }
         if (dto.getChannel() != null) {
-            entity.setChannel(
-                    entity.getChannel()
-                            .href(dto.getChannel().getHref())
-                            .name(dto.getChannel().getName())
-                            .role(dto.getChannel().getRole())
-                            .type(dto.getChannel().getType())
+            entity.setChannel(new ChannelConvectorImpl()
+                    .updateConvectorToEntity(entity.getChannel(), dto.getChannel())
             );
         }
         if (dto.getNote() != null) {

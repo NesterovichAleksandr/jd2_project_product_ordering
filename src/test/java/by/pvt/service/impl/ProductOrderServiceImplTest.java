@@ -64,15 +64,14 @@ public class ProductOrderServiceImplTest {
     @Commit
     public void createReadUpdateDelete() {
         //create
-        ProductOrder productOrder = new ProductOrder();
-        productOrder.setDescription("TestDescription");
+        ProductOrder productOrder = CreateAndFillEntity.productOrder("21");
         objUnderTest.create(productOrder);
         String id = productOrder.getId();
         assertNotNull(id);
 
         //read
         ProductOrder productOrder1 = objUnderTest.read(id);
-        assertEquals("TestDescription", productOrder1.getDescription());
+        assertEquals("Description_21", productOrder1.getDescription());
 
         //update
         productOrder1.setCategory("TestCategory");

@@ -2,6 +2,7 @@ package by.pvt.dao.impl;
 
 import by.pvt.dao.ProductOrderDao;
 import by.pvt.model.ProductOrder;
+import by.pvt.utils.CreateAndFillEntity;
 import io.swagger.configuration.HibernateXMLConfTest;
 import org.junit.After;
 import org.junit.Before;
@@ -14,7 +15,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -44,10 +44,7 @@ public class ProductOrderDaoImplTest {
     @Test
     @Commit
     public void crud() {
-        ProductOrder productOrder = new ProductOrder();
-        productOrder.setDescription("DescriptionTestCRUD");
-        productOrder.setCategory("CategoryTestCRUD");
-        productOrder.setHref("localhost/TestCRUD");
+        ProductOrder productOrder = CreateAndFillEntity.productOrder("TestCRUD");
 
         //create
         productOrderDao.create(productOrder);
@@ -56,7 +53,7 @@ public class ProductOrderDaoImplTest {
 
         //read
         ProductOrder productOrder1 = productOrderDao.read(id);
-        assertEquals("DescriptionTestCRUD", productOrder1.getDescription());
+        assertEquals("Description_TestCRUD", productOrder1.getDescription());
 
         //update
         productOrder1.setDescription("New DescriptionTestCRUD");

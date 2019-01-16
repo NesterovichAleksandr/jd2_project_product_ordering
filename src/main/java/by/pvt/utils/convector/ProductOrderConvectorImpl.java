@@ -66,14 +66,12 @@ public class ProductOrderConvectorImpl {
                     .updateConvectorToEntity(entity.getBillingAccount(), dto.getBillingAccount())
             );
         }
-        entity.setRelatedParty(List.of(
-                entity.getRelatedParty().get(0)
-                        .href(dto.getRelatedParty().get(0).getHref())
-                        .name(dto.getRelatedParty().get(0).getName())
-                        .role(dto.getRelatedParty().get(0).getRole())
-                        .type(dto.getRelatedParty().get(0).getType())
-        ));
-        if (dto.getPayment() !=null && !dto.getPayment().isEmpty()){
+        if (dto.getRelatedParty() != null && !dto.getRelatedParty().isEmpty()) {
+            entity.setRelatedParty(new RelatedPartyRefConvectorImpl()
+                    .updateConvectorToEntityList(entity.getRelatedParty(), dto.getRelatedParty())
+            );
+        }
+        if (dto.getPayment() != null && !dto.getPayment().isEmpty()) {
             entity.setPayment(new PaymentRefConvectorImpl()
                     .updateConvectorToEntityList(entity.getPayment(), dto.getPayment())
             );

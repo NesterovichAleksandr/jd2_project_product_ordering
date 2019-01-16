@@ -62,11 +62,8 @@ public class ProductOrderConvectorImpl {
             entity.setNote(dto.getNote());
         }
         if (dto.getBillingAccount() != null) {
-            entity.setBillingAccount(
-                    entity.getBillingAccount()
-                            .href(dto.getBillingAccount().getHref())
-                            .name(dto.getBillingAccount().getName())
-                            .type(dto.getBillingAccount().getType())
+            entity.setBillingAccount(new BillingAccountRefConvectorImpl()
+                    .updateConvectorToEntity(entity.getBillingAccount(), dto.getBillingAccount())
             );
         }
         entity.setRelatedParty(List.of(

@@ -1,5 +1,6 @@
 package by.pvt.utils.convector;
 
+import by.pvt.model.Note;
 import by.pvt.model.ProductOrder;
 
 import java.util.List;
@@ -59,7 +60,9 @@ public class ProductOrderConvectorImpl {
             );
         }
         if (dto.getNote() != null) {
-            entity.setNote(dto.getNote());
+            entity.setNote(new NoteConvectorImpl()
+                    .updateConvectorToEntity(entity.getNote(), dto.getNote())
+            );
         }
         if (dto.getBillingAccount() != null) {
             entity.setBillingAccount(new BillingAccountRefConvectorImpl()

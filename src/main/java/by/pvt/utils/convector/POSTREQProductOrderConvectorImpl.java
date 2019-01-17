@@ -22,9 +22,9 @@ public class POSTREQProductOrderConvectorImpl {
         postreqProductOrder.setChannel(new ChannelConvectorImpl()
                 .convectorToNewEntity(dto.getChannel())
         );
-        Note note = new Note();
-        note.setText("Text");
-        postreqProductOrder.setNote(note);
+        postreqProductOrder.setNote(new NoteConvectorImpl()
+                .convectorToNewEntity(dto.getNote())
+        );
 
         postreqProductOrder.setRelatedParty(new RelatedPartyRefConvectorImpl()
                 .convectorToNewEntityList(dto.getRelatedParty())

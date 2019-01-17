@@ -1,6 +1,8 @@
 package by.pvt.utils.convector;
 
-import by.pvt.model.*;
+import by.pvt.model.ActionType;
+import by.pvt.model.POSTREQOrderItem;
+import by.pvt.model.POSTREQProductOrder;
 
 import java.util.List;
 
@@ -25,20 +27,19 @@ public class POSTREQProductOrderConvectorImpl {
         postreqProductOrder.setNote(new NoteConvectorImpl()
                 .convectorToNewEntity(dto.getNote())
         );
-
         postreqProductOrder.setRelatedParty(new RelatedPartyRefConvectorImpl()
                 .convectorToNewEntityList(dto.getRelatedParty())
         );
         postreqProductOrder.setPayment(new PaymentRefConvectorImpl()
                 .convectorToNewEntityList(dto.getPayment())
         );
-        BillingAccountRef billingAccountRef = new BillingAccountRef();
-        billingAccountRef.setHref("Href");
-        postreqProductOrder.setBillingAccount(billingAccountRef);
-        OrderPrice orderPrice = new OrderPrice();
-        orderPrice.setPriceType(PriceType.ONETIME);
-        orderPrice.setPrice(new Price());
-        postreqProductOrder.setOrderTotalPrice(List.of(orderPrice));
+        postreqProductOrder.setBillingAccount(new BillingAccountRefConvectorImpl()
+                .convectorToNewEntity(dto.getBillingAccount())
+        );
+        postreqProductOrder.setOrderTotalPrice(new OrderPriceConvectorImpl()
+                .convectorToNewEntityList(dto.getOrderTotalPrice())
+        );
+
         POSTREQOrderItem postreqOrderItem = new POSTREQOrderItem();
         postreqOrderItem.setAction(ActionType.ADD);
         postreqProductOrder.setOrderItem(List.of(postreqOrderItem));

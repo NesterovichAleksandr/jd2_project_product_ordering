@@ -1,8 +1,8 @@
 package by.pvt.utils.convector;
 
 import by.pvt.model.OrderPrice;
-import by.pvt.model.Price;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderPriceConvectorImpl {
@@ -28,13 +28,12 @@ public class OrderPriceConvectorImpl {
         orderPrice.setRecurringChargePeriod(dto.getRecurringChargePeriod());
         orderPrice.setType(dto.getType());
         orderPrice.setSchemaLocation(dto.getSchemaLocation());
-        Price price = new Price();
-        orderPrice.setPrice(
-                price
+        orderPrice.setPrice(new PriceConvectorImpl()
+                .convectorToNewEntity(dto.getPrice())
         );
-        orderPrice.setPriceAlteration(List.of(
-
-        ));
+        orderPrice.setPriceAlteration(new PriceAlterationConvectorImpl()
+                .convectorToNewEntityList(dto.getPriceAlteration())
+        );
         orderPrice.setBillingAccount(new BillingAccountRefConvectorImpl()
                 .convectorToNewEntity(dto.getBillingAccount())
         );
@@ -48,6 +47,14 @@ public class OrderPriceConvectorImpl {
             if (!listEntity.contains(p)) {
                 listEntity.add(convectorToNewEntity(p));
             }
+        }
+        return listEntity;
+    }
+
+    public List<OrderPrice> convectorToNewEntityList(List<OrderPrice> listDto) {
+        List<OrderPrice> listEntity = new ArrayList<>();
+        for (OrderPrice p : listDto) {
+            listEntity.add(convectorToNewEntity(p));
         }
         return listEntity;
     }

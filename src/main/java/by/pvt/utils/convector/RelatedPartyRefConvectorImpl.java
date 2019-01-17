@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RelatedPartyRefConvectorImpl {
@@ -47,6 +48,14 @@ public class RelatedPartyRefConvectorImpl {
             if (!listEntity.contains(p)) {
                 listEntity.add(convectorToNewEntity(p));
             }
+        }
+        return listEntity;
+    }
+
+    public List<RelatedPartyRef> convectorToNewEntityList(List<RelatedPartyRef> listDto) {
+        List<RelatedPartyRef> listEntity = new ArrayList<>();
+        for (RelatedPartyRef p : listDto) {
+            listEntity.add(convectorToNewEntity(p));
         }
         return listEntity;
     }

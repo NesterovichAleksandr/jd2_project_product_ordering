@@ -2,6 +2,7 @@ package by.pvt.utils.convector;
 
 import by.pvt.model.PaymentRef;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class PaymentRefConvectorImpl {
@@ -40,6 +41,14 @@ public class PaymentRefConvectorImpl {
             if (!listEntity.contains(p)) {
                 listEntity.add(convectorToNewEntity(p));
             }
+        }
+        return listEntity;
+    }
+
+    public List<PaymentRef> convectorToNewEntityList(List<PaymentRef> listDto) {
+        List<PaymentRef> listEntity = new LinkedList<>();
+        for (PaymentRef p : listDto) {
+            listEntity.add(convectorToNewEntity(p));
         }
         return listEntity;
     }

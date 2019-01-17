@@ -4,6 +4,16 @@ import by.pvt.model.Channel;
 
 public class ChannelConvectorImpl {
 
+    public Channel convectorToNewEntity(Channel dto) {
+        Channel channel = new Channel();
+        channel.setHref(dto.getHref());
+        channel.setName(dto.getName());
+        channel.setRole(dto.getRole());
+        channel.setType(dto.getType());
+
+        return channel;
+    }
+
     public Channel updateConvectorToEntity(Channel entity, Channel dto) {
 
         if (dto.getHref() != null) {
